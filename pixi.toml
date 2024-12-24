@@ -21,7 +21,7 @@ scikit-learn = "1.6.0"
 hyperfine = "1.19.0"
 
 [tasks]
-bench = "hyperfine --warmup 1 -p 'pixi clean' 'pixi install' -r 5"
+bench = "hyperfine --warmup 1 -p 'pixi clean' 'pixi install -e simple' 'pixi install -e python' 'pixi install -e extreme' -r 5"
 
 [environments]
 simple = ["simple"]
