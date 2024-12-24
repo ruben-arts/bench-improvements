@@ -1,0 +1,29 @@
+[project]
+authors = ["Ruben Arts <ruben.arts@hotmail.com>"]
+channels = ["https://prefix.dev/conda-forge"]
+description = "benchmarking improvements"
+name = "bench-improvements"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[feature.simple.dependencies]
+bat = "0.24.0"
+
+[feature.python.dependencies]
+rich = "13.9.4"
+
+[feature.extreme.dependencies]
+rust = "1.82"
+scipy = "1.14.1"
+scikit-learn = "1.6.0"
+
+[dependencies]
+hyperfine = "1.19.0"
+
+[tasks]
+bench = "hyperfine --warmup 1 -p 'pixi clean' 'pixi install' -r 5"
+
+[environments]
+simple = ["simple"]
+python = ["python"]
+extreme = ["extreme"]
