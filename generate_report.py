@@ -12,10 +12,10 @@ for filename in os.listdir('./benchmark-data'):
     if filename.endswith('.json'):
         with open(f'./benchmark-data/{filename}', 'r') as file:
             data = json.load(file)
-            split = filename.replace('.json', '').split('-')
+            split = filename.replace('.json', '').split('_')
             if len(split) >= 2:  # Prevents unpacking errors
-                machine = split[0]+split[1]
-                version = split[2]
+                machine = split[0]
+                version = split[1]
                 for entry in data['results']:
                     e_flag = entry['command'].split('-e')[-1].strip()
                     dfs.append({

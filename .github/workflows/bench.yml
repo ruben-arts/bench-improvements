@@ -21,10 +21,15 @@ jobs:
           cache: false
       - run: |
           pixi run bench-cached-install
+
+      - name: Rename and Upload Benchmark Results
+        run: |
+          mv result-cached-install.json ${{ matrix.os }}_${{ matrix.pixi_version }}_bench-results.json
+
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.os }}-${{ matrix.pixi_version }}-bench-results.json
-          path: result-cached-install.json
+          name: benchmark-results
+          path: ${{ matrix.os }}_${{ matrix.pixi_version }}_bench-results.json
 
   generate-report:
     needs: bench-cached-install
@@ -37,6 +42,9 @@ jobs:
         with:
           name: benchmark-results
           path: ./benchmark-data
+
+      - name: Verify Downloaded Files
+        run: ls -lh ./benchmark-data
 
       - uses: prefix-dev/setup-pixi@v0
         with:
