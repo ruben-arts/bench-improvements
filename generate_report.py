@@ -13,7 +13,7 @@ for filename in os.listdir('./benchmark-data'):
         with open(f'./benchmark-data/{filename}', 'r') as file:
             data = json.load(file)
             split = filename.replace('.json', '').split('_')
-            if len(split) >= 2:  # Prevents unpacking errors
+            if len(split) >= 2:  # Prevent unpacking errors
                 machine = split[0]
                 version = split[1]
                 for entry in data['results']:
@@ -28,11 +28,15 @@ for filename in os.listdir('./benchmark-data'):
 # Convert data into DataFrame
 df = pd.DataFrame(dfs)
 
-# Calculate the improvement by sorting the lowest mean time
+# Check if 'label' exists, if not create it
+if 'label' not in df.columns:
+    df['label'] = df['machine_type'] + " - " + df['e_flag']
+
+# Calculate the improvement by taking the difference between old and new versions
 improvement_df = df.groupby("label")['mean_time'].min().reset_index()
 improvement_df = improvement_df.sort_values(by="mean_time", ascending=True)
 
-# Reorder the data by the biggest improvement
+# Reorder the data by the biggest improvement (smallest mean_time)
 sorted_labels = improvement_df['label'].tolist()
 df['label'] = pd.Categorical(df['label'], categories=sorted_labels, ordered=True)
 
@@ -43,7 +47,7 @@ bar_width = 0.35  # Adjust bar width for better spacing
 # Generate x_pos dynamically based on the number of labels
 x_pos = np.arange(len(unique_labels))
 
-# Plot the benchmark comparison (x_pos calculated for each loop)
+# Plot the benchmark comparison with dynamically calculated x_pos
 plt.figure(figsize=(14, 10))
 
 # Plot each version separately with dynamically calculated x_pos
@@ -62,13 +66,11 @@ for idx, version in enumerate(df['pixi_version'].unique()):
 plt.yticks(subset_x_pos, subset['label'])
 plt.title('Benchmark Comparing Cached Install Time by Machine')
 plt.xlabel('Mean Installation Time (s)')
-plt.ylabel('Machine and Number of Files')
+plt.ylabel('Machine and Environment')
 plt.legend(title="Pixi Version")
 plt.grid(axis='x')
 plt.tight_layout()
 
-# Save the plot to a file
+# Save the plot to a file and display it
 plt.savefig('benchmark_comparison_report.png', dpi=300)
-
-# When debugging use this:
 # plt.show()
