@@ -7,7 +7,7 @@ on:
   merge_group:
 
 jobs:
-  test:
+  bench-cached-install:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -15,13 +15,37 @@ jobs:
         pixi_version: [v0.39.2, v0.39.3, v0.39.4, v0.39.5]
     steps:
       - uses: actions/checkout@v4
-      - uses: prefix-dev/setup-pixi@v0.8.1
+      - uses: prefix-dev/setup-pixi@v0
         with:
           pixi-version: ${{ matrix.pixi_version }}
           cache: false
       - run: |
-          pixi run bench
+          pixi run bench-cached-install
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.os }}-${{ matrix.pixi_version }}-bench-results.json
-          path: result.json
+          path: result-cached-install.json
+
+  generate-report:
+    needs: bench-cached-install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download Benchmark Results
+        uses: actions/download-artifact@v4
+        with:
+          name: benchmark-results
+          path: ./benchmark-data
+
+      - uses: prefix-dev/setup-pixi@v0
+        with:
+          cache: true
+      - run: |
+          pixi run report
+
+      - name: Upload Benchmark Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-report
+          path: benchmark_comparison_report.png

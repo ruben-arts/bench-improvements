@@ -9,7 +9,7 @@ platforms = ["osx-arm64", "linux-64", "osx-64",  "win-64"]
 bat = "0.24.0"
 
 [feature.python.dependencies]
-rich = "13.9.4"
+python = "3.13"
 
 [feature.extreme.dependencies]
 rust = "1.82"
@@ -28,9 +28,8 @@ pixi-kernel = ">=0.6.0,<0.7"
 ipykernel = ">=6.29.5,<7"
 
 [tasks]
-bench = "hyperfine --warmup 1 -p 'pixi clean' 'pixi install -e simple' 'pixi install -e python' 'pixi install -e extreme' -r 5 --export-json result.json"
-
+bench-cached-install = "hyperfine --warmup 1 -p 'pixi clean' 'pixi install -e only-python' 'pixi install -e 50k-files' -r 5 --export-json result-cached-install.json"
+report = "python generate_report.py"
 [environments]
-simple = { features = ["simple", "bench"], no-default-feature = true }
-python = { features = ["python", "bench"], no-default-feature = true }
-extreme = { features = ["extreme", "bench"], no-default-feature = true }
+only-python = { features = ["python", "bench"], no-default-feature = true }
+50k-files = { features = ["extreme", "bench"], no-default-feature = true }

@@ -5,6 +5,7 @@
 
 
 extracted_*.zip
+benchmark-data
 
 .ipynb_checkpoints
 
