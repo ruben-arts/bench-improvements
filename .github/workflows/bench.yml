@@ -52,8 +52,12 @@ jobs:
       - run: |
           pixi run report
 
-      - name: Upload Benchmark Report
+      - name: Compress Benchmark Reports into ZIP
+        run: |
+          zip benchmark-report.zip benchmark_*.png
+
+      - name: Upload Benchmark Report (ZIP)
         uses: actions/upload-artifact@v4
         with:
           name: benchmark-report
-          path: benchmark_comparison_report.png
+          path: benchmark-report.zip

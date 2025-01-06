@@ -47,7 +47,7 @@ bar_width = 0.35  # Adjust bar width for better spacing
 # Generate x_pos dynamically based on the number of labels
 x_pos = np.arange(len(unique_labels))
 
-# Plot the benchmark comparison with dynamically calculated x_pos
+# === BAR CHART ===
 plt.figure(figsize=(14, 10))
 
 # Plot each version separately with dynamically calculated x_pos
@@ -62,7 +62,7 @@ for idx, version in enumerate(df['pixi_version'].unique()):
             label=f"Pixi {version}"
         )
 
-# Finalize the plot with adjusted labels and ticks
+# Finalize the bar plot with adjusted labels and ticks
 plt.yticks(subset_x_pos, subset['label'])
 plt.title('Benchmark Comparing Cached Install Time by Machine')
 plt.xlabel('Mean Installation Time (s)')
@@ -71,6 +71,32 @@ plt.legend(title="Pixi Version")
 plt.grid(axis='x')
 plt.tight_layout()
 
-# Save the plot to a file and display it
-plt.savefig('benchmark_comparison_report.png', dpi=300)
+# Save the bar chart to a file
+plt.savefig('benchmark_comparison_bar_chart.png', dpi=300)
+
+# === LINE GRAPH ===
+plt.figure(figsize=(14, 10))
+
+# Line plot for each machine and environment over multiple pixi versions
+for label in unique_labels:
+    subset = df[df['label'] == label].sort_values(by="pixi_version")
+    plt.plot(
+        subset['pixi_version'],
+        subset['mean_time'],
+        marker='o',
+        label=label
+    )
+
+# Finalize the line plot with adjusted labels and ticks
+plt.title('Benchmark Trend Over Pixi Versions')
+plt.xlabel('Pixi Version')
+plt.ylabel('Mean Installation Time (s)')
+plt.legend(title="Machine and Environment", loc="upper right")
+plt.grid(axis='y')
+plt.tight_layout()
+
+# Save the line chart to a separate file
+plt.savefig('benchmark_comparison_line_graph.png', dpi=300)
+
+# Optional: Show plots (commented out since you're saving files)
 # plt.show()
