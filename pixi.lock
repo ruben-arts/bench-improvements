@@ -11,7 +11,6 @@ environments:
       - conda: https://prefix.dev/conda-forge/linux-64/bzip2-1.0.8-h4bc722e_7.conda
       - conda: https://prefix.dev/conda-forge/linux-64/ca-certificates-2024.12.14-hbcca054_0.conda
       - conda: https://prefix.dev/conda-forge/linux-64/gcc_impl_linux-64-14.2.0-h6b349bd_1.conda
-      - conda: https://prefix.dev/conda-forge/linux-64/hyperfine-1.19.0-h8fae777_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/joblib-1.4.2-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/noarch/kernel-headers_linux-64-3.10.0-he073ed8_18.conda
       - conda: https://prefix.dev/conda-forge/linux-64/ld_impl_linux-64-2.43-h712a8e2_2.conda
@@ -53,7 +52,6 @@ environments:
       osx-64:
       - conda: https://prefix.dev/conda-forge/osx-64/bzip2-1.0.8-hfdf4475_7.conda
       - conda: https://prefix.dev/conda-forge/osx-64/ca-certificates-2024.12.14-h8857fd0_0.conda
-      - conda: https://prefix.dev/conda-forge/osx-64/hyperfine-1.19.0-h371c88c_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/joblib-1.4.2-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/osx-64/libblas-3.9.0-26_osx64_openblas.conda
       - conda: https://prefix.dev/conda-forge/osx-64/libcblas-3.9.0-26_osx64_openblas.conda
@@ -85,7 +83,6 @@ environments:
       osx-arm64:
       - conda: https://prefix.dev/conda-forge/osx-arm64/bzip2-1.0.8-h99b78c6_7.conda
       - conda: https://prefix.dev/conda-forge/osx-arm64/ca-certificates-2024.12.14-hf0a4a13_0.conda
-      - conda: https://prefix.dev/conda-forge/osx-arm64/hyperfine-1.19.0-h0716509_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/joblib-1.4.2-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/osx-arm64/libblas-3.9.0-26_osxarm64_openblas.conda
       - conda: https://prefix.dev/conda-forge/osx-arm64/libcblas-3.9.0-26_osxarm64_openblas.conda
@@ -118,7 +115,6 @@ environments:
       win-64:
       - conda: https://prefix.dev/conda-forge/win-64/bzip2-1.0.8-h2466b09_7.conda
       - conda: https://prefix.dev/conda-forge/win-64/ca-certificates-2024.12.14-h56e8100_0.conda
-      - conda: https://prefix.dev/conda-forge/win-64/hyperfine-1.19.0-ha073cba_0.conda
       - conda: https://prefix.dev/conda-forge/win-64/intel-openmp-2024.2.1-h57928b3_1083.conda
       - conda: https://prefix.dev/conda-forge/noarch/joblib-1.4.2-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/win-64/libblas-3.9.0-26_win64_mkl.conda
@@ -211,6 +207,7 @@ environments:
       - conda: https://prefix.dev/conda-forge/noarch/hpack-4.0.0-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/noarch/httpcore-1.0.7-pyh29332c3_1.conda
       - conda: https://prefix.dev/conda-forge/noarch/httpx-0.28.1-pyhd8ed1ab_0.conda
+      - conda: https://prefix.dev/conda-forge/linux-64/hyperfine-1.19.0-h8fae777_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/hyperframe-6.0.1-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/linux-64/icu-75.1-he02047a_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/idna-3.10-pyhd8ed1ab_1.conda
@@ -446,6 +443,7 @@ environments:
       - conda: https://prefix.dev/conda-forge/noarch/hpack-4.0.0-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/noarch/httpcore-1.0.7-pyh29332c3_1.conda
       - conda: https://prefix.dev/conda-forge/noarch/httpx-0.28.1-pyhd8ed1ab_0.conda
+      - conda: https://prefix.dev/conda-forge/osx-64/hyperfine-1.19.0-h371c88c_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/hyperframe-6.0.1-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/noarch/idna-3.10-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/noarch/importlib-metadata-8.5.0-pyha770c72_1.conda
@@ -628,6 +626,7 @@ environments:
       - conda: https://prefix.dev/conda-forge/noarch/hpack-4.0.0-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/noarch/httpcore-1.0.7-pyh29332c3_1.conda
       - conda: https://prefix.dev/conda-forge/noarch/httpx-0.28.1-pyhd8ed1ab_0.conda
+      - conda: https://prefix.dev/conda-forge/osx-arm64/hyperfine-1.19.0-h0716509_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/hyperframe-6.0.1-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/noarch/idna-3.10-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/noarch/importlib-metadata-8.5.0-pyha770c72_1.conda
@@ -823,6 +822,7 @@ environments:
       - conda: https://prefix.dev/conda-forge/noarch/hpack-4.0.0-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/noarch/httpcore-1.0.7-pyh29332c3_1.conda
       - conda: https://prefix.dev/conda-forge/noarch/httpx-0.28.1-pyhd8ed1ab_0.conda
+      - conda: https://prefix.dev/conda-forge/win-64/hyperfine-1.19.0-ha073cba_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/hyperframe-6.0.1-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/win-64/icu-75.1-he0c23c2_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/idna-3.10-pyhd8ed1ab_1.conda
@@ -988,7 +988,6 @@ environments:
       - conda: https://prefix.dev/conda-forge/linux-64/_openmp_mutex-4.5-2_gnu.tar.bz2
       - conda: https://prefix.dev/conda-forge/linux-64/bzip2-1.0.8-h4bc722e_7.conda
       - conda: https://prefix.dev/conda-forge/linux-64/ca-certificates-2024.12.14-hbcca054_0.conda
-      - conda: https://prefix.dev/conda-forge/linux-64/hyperfine-1.19.0-h8fae777_0.conda
       - conda: https://prefix.dev/conda-forge/linux-64/ld_impl_linux-64-2.43-h712a8e2_2.conda
       - conda: https://prefix.dev/conda-forge/linux-64/libexpat-2.6.4-h5888daf_0.conda
       - conda: https://prefix.dev/conda-forge/linux-64/libffi-3.4.2-h7f98852_5.tar.bz2
@@ -1014,7 +1013,6 @@ environments:
       osx-64:
       - conda: https://prefix.dev/conda-forge/osx-64/bzip2-1.0.8-hfdf4475_7.conda
       - conda: https://prefix.dev/conda-forge/osx-64/ca-certificates-2024.12.14-h8857fd0_0.conda
-      - conda: https://prefix.dev/conda-forge/osx-64/hyperfine-1.19.0-h371c88c_0.conda
       - conda: https://prefix.dev/conda-forge/osx-64/libexpat-2.6.4-h240833e_0.conda
       - conda: https://prefix.dev/conda-forge/osx-64/libffi-3.4.2-h0d85af4_5.tar.bz2
       - conda: https://prefix.dev/conda-forge/osx-64/liblzma-5.6.3-hd471939_1.conda
@@ -1035,7 +1033,6 @@ environments:
       osx-arm64:
       - conda: https://prefix.dev/conda-forge/osx-arm64/bzip2-1.0.8-h99b78c6_7.conda
       - conda: https://prefix.dev/conda-forge/osx-arm64/ca-certificates-2024.12.14-hf0a4a13_0.conda
-      - conda: https://prefix.dev/conda-forge/osx-arm64/hyperfine-1.19.0-h0716509_0.conda
       - conda: https://prefix.dev/conda-forge/osx-arm64/libexpat-2.6.4-h286801f_0.conda
       - conda: https://prefix.dev/conda-forge/osx-arm64/libffi-3.4.2-h3422bc3_5.tar.bz2
       - conda: https://prefix.dev/conda-forge/osx-arm64/liblzma-5.6.3-h39f12f2_1.conda
@@ -1056,7 +1053,6 @@ environments:
       win-64:
       - conda: https://prefix.dev/conda-forge/win-64/bzip2-1.0.8-h2466b09_7.conda
       - conda: https://prefix.dev/conda-forge/win-64/ca-certificates-2024.12.14-h56e8100_0.conda
-      - conda: https://prefix.dev/conda-forge/win-64/hyperfine-1.19.0-ha073cba_0.conda
       - conda: https://prefix.dev/conda-forge/win-64/libexpat-2.6.4-he0c23c2_0.conda
       - conda: https://prefix.dev/conda-forge/win-64/libffi-3.4.2-h8ffe710_5.tar.bz2
       - conda: https://prefix.dev/conda-forge/win-64/liblzma-5.6.3-h2466b09_1.conda

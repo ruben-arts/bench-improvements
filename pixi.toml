@@ -13,10 +13,9 @@ rust = "1.82"
 scipy = "1.14.1"
 scikit-learn = "1.6.0"
 
-[feature.bench.dependencies]
-hyperfine = "1.19.0"
 
 [dependencies]
+hyperfine = "1.19.0"
 jupyterlab = "*"
 pandas = ">=2.2.3,<3"
 matplotlib = ">=3.10.0,<4"
@@ -27,6 +26,7 @@ ipykernel = ">=6.29.5,<7"
 [tasks]
 bench-cached-install = "hyperfine --warmup 1 -p 'pixi clean' 'pixi install -e only-python' 'pixi install -e 50k-files' -r 5 --export-json result-cached-install.json"
 report = "python generate_report.py"
+
 [environments]
-only-python = { features = ["python", "bench"], no-default-feature = true }
-50k-files = { features = ["extreme", "bench"], no-default-feature = true }
+only-python = { features = ["python"], no-default-feature = true }
+50k-files = { features = ["extreme"], no-default-feature = true }
