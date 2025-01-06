@@ -2,3 +2,10 @@
 # pixi environments
 .pixi
 *.egg-info
+
+
+extracted_*.zip
+
+.ipynb_checkpoints
+
+result.json

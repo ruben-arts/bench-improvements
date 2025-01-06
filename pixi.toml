@@ -4,7 +4,6 @@ channels = ["https://prefix.dev/conda-forge"]
 description = "benchmarking improvements"
 name = "bench-improvements"
 platforms = ["osx-arm64", "linux-64", "osx-64",  "win-64"]
-version = "0.1.0"
 
 [feature.simple.dependencies]
 bat = "0.24.0"
@@ -17,13 +16,21 @@ rust = "1.82"
 scipy = "1.14.1"
 scikit-learn = "1.6.0"
 
-[dependencies]
+[feature.bench.dependencies]
 hyperfine = "1.19.0"
+
+[dependencies]
+jupyterlab = "*"
+pandas = ">=2.2.3,<3"
+matplotlib = ">=3.10.0,<4"
+ipywidgets = ">=8.1.5,<9"
+pixi-kernel = ">=0.6.0,<0.7"
+ipykernel = ">=6.29.5,<7"
 
 [tasks]
 bench = "hyperfine --warmup 1 -p 'pixi clean' 'pixi install -e simple' 'pixi install -e python' 'pixi install -e extreme' -r 5 --export-json result.json"
 
 [environments]
-simple = ["simple"]
-python = ["python"]
-extreme = ["extreme"]
+simple = { features = ["simple", "bench"], no-default-feature = true }
+python = { features = ["python", "bench"], no-default-feature = true }
+extreme = { features = ["extreme", "bench"], no-default-feature = true }
