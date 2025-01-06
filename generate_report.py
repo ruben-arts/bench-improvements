@@ -1,3 +1,4 @@
+from packaging.version import parse
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
@@ -29,9 +30,19 @@ for dir in os.listdir('./benchmark-data'):
 # Convert data into DataFrame
 df = pd.DataFrame(dfs)
 
+# Debugging step to inspect columns
+print("DataFrame Columns:", df.columns)
+print("First few rows:\n", df.head())
+
+# Ensure the versions are parsed correctly
+df['pixi_version'] = df['pixi_version'].apply(lambda x: parse(x.replace('v', '')))
+
 # Check if 'label' exists, if not create it
 if 'label' not in df.columns:
     df['label'] = df['machine_type'] + " - " + df['e_flag']
+
+# Sort versions correctly using version logic
+df = df.sort_values(by="pixi_version", ascending=False)
 
 # Calculate the improvement by taking the difference between old and new versions
 improvement_df = df.groupby("label")['mean_time'].min().reset_index()
@@ -85,7 +96,7 @@ plt.figure(figsize=(14, 10))
 for label in unique_labels:
     subset = df[df['label'] == label].sort_values(by="pixi_version")
     plt.plot(
-        subset['pixi_version'],
+        subset['pixi_version'].astype(str),
         subset['mean_time'],
         marker='o',
         label=label
@@ -101,6 +112,4 @@ plt.tight_layout()
 
 # Save the line chart to a separate file
 plt.savefig('benchmark_comparison_line_graph.png', dpi=300)
-
-# Optional: Show plots (commented out since you're saving files)
 # plt.show()
