@@ -28,7 +28,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: benchmark-results
+          name: ${{ matrix.os }}_${{ matrix.pixi_version }}_benchmark-results
           path: ${{ matrix.os }}_${{ matrix.pixi_version }}_bench-results.json
 
   generate-report:
