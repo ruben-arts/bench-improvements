@@ -5,9 +5,6 @@ description = "benchmarking improvements"
 name = "bench-improvements"
 platforms = ["osx-arm64", "linux-64", "osx-64",  "win-64"]
 
-[feature.simple.dependencies]
-bat = "0.24.0"
-
 [feature.python.dependencies]
 python = "3.13"
 
