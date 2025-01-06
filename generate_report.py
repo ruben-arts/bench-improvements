@@ -9,21 +9,20 @@ dfs = []
 
 # Loop through all benchmark result files
 for filename in os.listdir('./benchmark-data'):
-    if filename.endswith('.json'):
-        with open(f'./benchmark-data/{filename}', 'r') as file:
-            data = json.load(file)
-            split = filename.replace('.json', '').split('_')
-            if len(split) >= 2:  # Prevent unpacking errors
-                machine = split[0]
-                version = split[1]
-                for entry in data['results']:
-                    e_flag = entry['command'].split('-e')[-1].strip()
-                    dfs.append({
-                        'machine_type': machine,
-                        'pixi_version': version,
-                        'e_flag': e_flag,
-                        'mean_time': entry['mean']
-                    })
+    with open(f'./benchmark-data/{filename}', 'r') as file:
+        data = json.load(file)
+        split = filename.replace('.json', '').split('_')
+        if len(split) >= 2:  # Prevent unpacking errors
+            machine = split[0]
+            version = split[1]
+            for entry in data['results']:
+                e_flag = entry['command'].split('-e')[-1].strip()
+                dfs.append({
+                    'machine_type': machine,
+                    'pixi_version': version,
+                    'e_flag': e_flag,
+                    'mean_time': entry['mean']
+                })
 
 # Convert data into DataFrame
 df = pd.DataFrame(dfs)
@@ -42,7 +41,10 @@ df['label'] = pd.Categorical(df['label'], categories=sorted_labels, ordered=True
 
 # Recalculate unique labels for accurate plotting
 unique_labels = df['label'].unique()
-bar_width = 0.35  # Adjust bar width for better spacing
+
+# Calculate the amount of versions for dynamic plotting
+num_versions = len(df['pixi_version'].unique())
+bar_width = 0.90/num_versions  # Adjust bar width for better spacing
 
 # Generate x_pos dynamically based on the number of labels
 x_pos = np.arange(len(unique_labels))
