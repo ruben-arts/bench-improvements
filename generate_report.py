@@ -8,8 +8,10 @@ import numpy as np
 dfs = []
 
 # Loop through all benchmark result files
-for filename in os.listdir('./benchmark-data'):
-    with open(f'./benchmark-data/{filename}', 'r') as file:
+for dir in os.listdir('./benchmark-data'):
+    # Get the json file in this directory
+    filename = [f for f in os.listdir(f"./benchmark-data/{dir}") if f.endswith('.json')][0]
+    with open(f'./benchmark-data/{dir}/{filename}', 'r') as file:
         data = json.load(file)
         split = filename.replace('.json', '').split('_')
         if len(split) >= 2:  # Prevent unpacking errors
